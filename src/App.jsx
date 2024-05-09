@@ -3,6 +3,7 @@ import './App.css'
 import { useSearchParams } from 'react-router-dom';
 import {getProduct} from  "./Endpoints/Endpoints.js"
 function App() {
+  const token="ldmslkdlksndksnfkjdsjfkdsnkjjfsdkjfdskjfskjfkjnfkjdsfjdnkjdsnkjshfjkdsnjdsfkjfjsknkjskjsnkjsdkjskjsfkjsnjf"
   const [currentQueryParameters, setSearchParams] = useSearchParams();
   const [input, setInput] = useState("")
   const handleSubmit=async(e)=>{
@@ -14,7 +15,7 @@ if(!input){
 newQueryParameters.set("id", input);
 setSearchParams(newQueryParameters);    
 
-const response = await getProduct(`/products/${input}`)
+const response = await getProduct(`/products/${input}`, token)
 console.log("Product fetched.")
 console.table(response)
   }
